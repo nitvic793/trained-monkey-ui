@@ -34,6 +34,11 @@ angular
         controller: 'UserCtrl',
         controllerAs: 'user'
       })
+      .when('/scorecard', {
+        templateUrl: 'views/scorecard.html',
+        controller: 'ScorecardCtrl',
+        controllerAs: 'scorecard'
+      })
       .otherwise({
         redirectTo: '/'
       });

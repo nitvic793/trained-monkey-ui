@@ -1,24 +1,27 @@
 <div class="row" ng-repeat="question in questions">
     <h2>Question {{question.order}}</h2>
     <p>{{question.question}}</p>
+    <div>
+        <img ng-repeat="image in question.images" src="images/{{image}}"/>
+    </div>
+    <br>
     <form class="form-inline" role="form">
         <div class="form-group">
-            <input type="text" class="form-control" ng-model="currentAnswer" placeholder="Answer here!" id="answer{{question.order}}" ng-change="onChange(question, currentAnswer)"
-            ng-disabled="question.answered">
+            <input type="text" class="form-control" ng-model="question.currentAnswer" placeholder="Answer here!" id="answer{{question.order}}"
+            ng-change="onChange(question, question.currentAnswer)" ng-disabled="question.answered">
 
             <div class="well" ng-show="question.showMessage">
                 <strong>{{question.status.title}}</strong> {{question.status.message}}.
             </div>
     </form>
     </div>
-   <hr>
+    <hr>
 </div>
 <div class="row">
     <form class="form-inline" role="form" id="Test">
         <h2>Final Answer</h2>
         <div class="form-group" ng-click="onFinalClick()">
-            <input type="text" class="form-control" ng-model="finalAnswer" placeholder="Answer here!" id="finalanswer" 
-            ng-disabled="!allowFinalAnswer" >
+            <input type="text" class="form-control" ng-model="finalAnswer" ng-change="onFinalChange()" placeholder="Answer here!" id="finalanswer" ng-disabled="!allowFinalAnswer">
 
             <div class="well" ng-show="showMessage">
                 <strong>{{status.title}}</strong> {{status.message}}.
@@ -27,4 +30,4 @@
 
     </div>
 </div>
-    <br>
+<br>
