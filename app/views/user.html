@@ -10,6 +10,7 @@
     <form class="form-inline" role="form">
         <div class="form-group">
             <input type="text" class="form-control" ng-model="question.currentAnswer" placeholder="Answer here!" id="answer{{question.order}}"
+            ng-keyup="onChange(question, question.currentAnswer)"
             ng-change="onChange(question, question.currentAnswer)" ng-disabled="question.answered">
             <img src="/images/loader.gif" height="42" width="42" ng-show="question.showLoader" />
             <span class="glyphicon glyphicon-ok green" ng-show="question.answered"></span>
