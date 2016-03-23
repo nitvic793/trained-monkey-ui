@@ -8,6 +8,33 @@
   padding: 0.2em 0;
 }
 
+.shadow{
+    box-shadow: 10px 10px 5px grey;
+}
+
+.card {
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: left;
+}
+
+.question {
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: left;
+    margin-bottom: 15px;
+    margin-left: 2%;
+    margin-right:2%;
+}
+
+.green{
+    color: green;
+}
+
 body {
   padding: 0;
 }
@@ -68,9 +95,13 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 960px;
   }
-
+  
+  .question{
+    margin-left: 0%;
+    margin-right:0%;
+  }
   /* Remove the padding we set earlier */
   .header,
   .marketing,

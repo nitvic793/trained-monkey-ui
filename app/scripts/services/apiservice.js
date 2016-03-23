@@ -90,5 +90,11 @@ angular.module('trainedMonkeyUiApp')
      
      this.getAllUsers = function getAllUsers(cb){
          var url = base + '/users/find';
+         get($http,url,cb);
+     }
+     
+     this.getAllFinalAnswers = function getAllFinalAnswers(cb){
+         var url = base + '/finalanswers/find?sort=createdAt';
+         get($http,url,cb);         
      }
   }]);

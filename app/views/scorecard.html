@@ -1,1 +1,25 @@
-<p>This is the scorecard view.</p>
+
+
+<div class="row">
+    <h1>Scorecard</h1>
+    <div ng-repeat="user in users" class="col-sm-4 card">
+        <h3><strong>Team:</strong> {{user.user}}</h3>
+        <strong>Answered:</strong> {{user.answeredCount}}
+        <br>
+        <strong>Updated At:</strong>
+        {{user.latestUpdated | date:'medium'}}
+    </div>
+</div>
+<hr>
+
+<div class="row table-responsive">
+    
+<h2>Final Answers</h2>
+    <table class="table card">
+        <tr><th>Team Name</th><th>Time</th></tr>
+        <tr ng-repeat="ans in finalAnswers">
+            <td>{{ans.user.user}}</td>
+            <td>{{ans.updatedAt | date:'medium'}}</td>
+        </tr>
+    </table>
+</div>
