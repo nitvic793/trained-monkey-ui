@@ -32,6 +32,7 @@ angular.module('trainedMonkeyUiApp')
         $scope.finalAnswer = '';
         $scope.allowFinalAnswer = false;
         $scope.showLoader = false;
+        $scope.finalAnswered = false;
         var finalAnswer;
 
         api.getUser(userId, function getCallback(data, err) {
@@ -108,6 +109,12 @@ angular.module('trainedMonkeyUiApp')
 
                 if (question.answers[i].toLowerCase() === ans.toLowerCase()) {
                     console.log('right');
+                    var status = {
+                        title: 'Success',
+                        message: 'That\'s right'
+                    };
+                    questions[qIndex].status = status;
+                    questions[qIndex].showMessage = true;
                     var answerPayload = {
                         answer: ans,
                         question: question.id,
@@ -121,12 +128,7 @@ angular.module('trainedMonkeyUiApp')
                             api.updateQuestion(questions[qIndex], function onFinish(data, err) {
                                 if (!err) {
                                     if (questions[qIndex].answered) {
-                                        var status = {
-                                            title: 'Success',
-                                            message: 'That\'s right'
-                                        };
-                                        questions[qIndex].status = status;
-                                        questions[qIndex].showMessage = true;
+
                                         checkForFinalAnswer();
                                     }
                                 }
@@ -194,9 +196,12 @@ angular.module('trainedMonkeyUiApp')
 
         $scope.onFinalChange = function onFinalChange() {
             if ($scope.finalAnswer.toLowerCase() === finalAnswer.answer.toLowerCase()) {
+                $scope.showLoader = true;
                 console.log("right");
+                $scope.allowFinalAnswer = false;
                 finalAnswer.answered = true;
                 api.updateFinalAnswer(finalAnswer, function onFinish(data, err) {
+                    $scope.showLoader = false;
                     if (!err) {
                         console.log(finalAnswer, data);
                         $scope.showMessage = true;
@@ -205,7 +210,15 @@ angular.module('trainedMonkeyUiApp')
                             message: 'Congratulations, you finished it!'
                         };
                     }
-                    $scope.allowFinalAnswer = false;
+                    else {
+                        $scope.showMessage = true;
+                        $scope.status = {
+                            title: 'Error',
+                            message: 'Connectivity issue!'
+                        };
+                        $scope.allowFinalAnswer = true;
+                    }
+
                 });
             }
         }

@@ -26,6 +26,7 @@
             <input type="text" class="form-control" ng-model="finalAnswer" ng-change="onFinalChange()" placeholder="Answer here!" id="finalanswer"
             ng-disabled="!allowFinalAnswer">
             <img src="/images/loader.gif" height="42" width="42" ng-show="showLoader" />
+            <span class="glyphicon glyphicon-ok green" ng-show="finalAnswered"></span>
             <div class="well" ng-show="showMessage">
                 <strong>{{status.title}}</strong> {{status.message}}.
             </div>
