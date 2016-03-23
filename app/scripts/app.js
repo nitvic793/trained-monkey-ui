@@ -15,6 +15,7 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
+    'ngLoadingSpinner',
     'ngTouch'
   ])
   .config(function ($routeProvider) {
