@@ -17,7 +17,7 @@
 <h2>Final Answers</h2>
     <table class="table card">
         <tr><th>Team Name</th><th>Time</th></tr>
-        <tr ng-repeat="ans in finalAnswers">
+        <tr ng-repeat="ans in finalAnswers" ng-show="ans.answered">
             <td>{{ans.user.user}}</td>
             <td>{{ans.updatedAt | date:'medium'}}</td>
         </tr>
