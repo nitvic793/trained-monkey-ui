@@ -41,6 +41,13 @@ angular.module('trainedMonkeyUiApp')
                 $scope.user = data[0];
                 $scope.questions = questions;
                 checkForFinalAnswer();
+                for (var i = 0; i < questions.length; ++i) {
+                    questions[i].showMessage = false;
+                    questions[i].status = {};
+                    questions[i].currentAnswer = '';
+                    questions[i].showLoader = false;
+                }
+                questions.sort(compare);
 
                 questions.forEach(function forEach(v, i, a) {
                     if (v.answered) {
@@ -49,14 +56,9 @@ angular.module('trainedMonkeyUiApp')
                         });
                     }
                 });
-                for (var i = 0; i < questions.length; ++i) {
-                    questions[i].showMessage = false;
-                    questions[i].status = {};
-                    questions[i].currentAnswer = '';
-                    questions[i].showLoader = false;
-                }
 
-                questions.sort(compare);
+
+
             }
             else {
                 console.log(err, userId);
