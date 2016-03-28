@@ -15,5 +15,8 @@ angular.module('trainedMonkeyUiApp')
       'Karma'
     ];
     console.log('test');
+    $scope.onClick = function(){
+        window.history.back();
+    }
     $scope.testData =  this.awesomeThings;
   }]);
