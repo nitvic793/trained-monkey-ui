@@ -55,7 +55,7 @@ angular.module('trainedMonkeyUiApp')
 .constant('config', {
     appName: 'My App',
     appVersion: 2.0,
-    apiUrl: 'http://localhost:3000/v1'
+    apiUrl: 'http://trained-monkey.herokuapp.com/v1'
 })
   .service('ApiService', ['$http', 'config', function ($http, config) {
       var base = config.apiUrl;

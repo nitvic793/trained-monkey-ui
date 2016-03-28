@@ -34,7 +34,15 @@ angular.module('trainedMonkeyUiApp')
         $scope.showLoader = false;
         $scope.finalAnswered = false;
         var finalAnswer;
-
+        function checkTime(apply){
+            for(var i=0;i<questions.length;++i){
+                console.log(Date.parse(questions[i].openTime),Date.parse(new Date().toISOString()));
+                questions[i].enabled = (Date.parse(questions[i].openTime)< Date.parse(new Date().toISOString())); 
+                if(apply){
+                    $scope.$apply();
+                }             
+            }
+        }
         api.getUser(userId, function getCallback(data, err) {
             if (!err) {
                 questions = data[0].questionIds;
@@ -47,6 +55,8 @@ angular.module('trainedMonkeyUiApp')
                     questions[i].currentAnswer = '';
                     questions[i].showLoader = false;
                 }
+                checkTime();
+                setInterval(checkTime,20000,true);
                 questions.sort(compare);
 
                 questions.forEach(function forEach(v, i, a) {
@@ -56,15 +66,13 @@ angular.module('trainedMonkeyUiApp')
                         });
                     }
                 });
-
-
-
             }
             else {
                 console.log(err, userId);
             }
         });
-
+        
+        
 
         var checkForFinalAnswer = function() {
             for (var i = 0; i < questions.length; ++i) {
