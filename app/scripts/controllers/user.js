@@ -36,7 +36,6 @@ angular.module('trainedMonkeyUiApp')
         var finalAnswer;
         function checkTime(apply){
             for(var i=0;i<questions.length;++i){
-                console.log(Date.parse(questions[i].openTime),Date.parse(new Date().toISOString()));
                 questions[i].enabled = (Date.parse(questions[i].openTime)< Date.parse(new Date().toISOString())); 
                 if(apply){
                     $scope.$apply();
@@ -90,7 +89,7 @@ angular.module('trainedMonkeyUiApp')
                 if (!err) {
                     finalAnswer = data[0];
                     console.log(finalAnswer);
-                    if (finalAnswer.answered) {
+                    if (finalAnswer && finalAnswer.answered) {
                         $scope.finalAnswer = finalAnswer.answer;
                         $scope.allowFinalAnswer = false;
                         $scope.status = {

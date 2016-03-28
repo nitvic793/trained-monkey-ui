@@ -12,7 +12,7 @@
             <input type="text" class="form-control" ng-model="question.currentAnswer" placeholder="Answer here!" id="answer{{question.order}}"
             ng-keyup="onChange(question, question.currentAnswer)"
             ng-change="onChange(question, question.currentAnswer)" ng-disabled="question.answered">
-            <img src="/images/loader.gif" height="42" width="42" ng-show="question.showLoader" />
+            <img src="/images/loading_spinner.gif" height="42" width="42" ng-show="question.showLoader" />
             <span class="glyphicon glyphicon-ok green" ng-show="question.answered"></span>
             <div class="well" ng-show="question.showMessage">
                 <strong>{{question.status.title}}</strong> {{question.status.message}}.
@@ -28,7 +28,7 @@
         <div class="form-group" ng-click="onFinalClick()">
             <input type="text" class="form-control" ng-model="finalAnswer" ng-change="onFinalChange()" placeholder="Answer here!" id="finalanswer"
             ng-disabled="!allowFinalAnswer">
-            <img src="/images/loader.gif" height="42" width="42" ng-show="showLoader" />
+            <img src="/images/loading_spinner.gif" height="42" width="42" ng-show="showLoader" />
             <span class="glyphicon glyphicon-ok green" ng-show="finalAnswered"></span>
             <div class="well" ng-show="showMessage">
                 <strong>{{status.title}}</strong> {{status.message}}.
