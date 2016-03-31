@@ -5,6 +5,9 @@
     <img src="/images/{{user.image}}" alt="Yo!" height="50"><br>
 </div>
 <div class="row question animate-if" ng-repeat="question in questions" ng-if="question.enabled">
+    <div class="panel story" ng-bind-html="question.story">
+        
+    </div>
     <h2>Question {{question.order}}</h2>
     <p ng-bind-html="question.question"></p>
     <div>
