@@ -164,10 +164,20 @@ angular.module('trainedMonkeyUiApp')
                     });
                     return;
                 }
+                else if(ans.length > 4 && question.answers[i].toLowerCase().indexOf(ans.toLowerCase())>-1){
+                    var status = {
+                        title: 'Warmer',
+                        message: 'You\'re getting close'
+                    };
+                    questions[qIndex].status = status;
+                    questions[qIndex].showMessage = true;
+                    questions[qIndex].showLoader = false;
+                    return;
+                }
                 else {
                     questions[qIndex].showLoader = false;
                 }
-
+                     console.log(question.answers[i].toLowerCase(),ans.toLowerCase() )  ; 
             }
 
             for (var i = 0; i < question.hints.length; ++i) {

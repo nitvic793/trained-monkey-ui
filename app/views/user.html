@@ -1,12 +1,12 @@
 
 <span us-spinner="{radius:30, width:8, length: 16}"></span>
 <div class="panel" style="text-align:center;">
-    <span class="user-head">Team {{user.user}}</span>
+    <span class="user-head">Team {{user.user}}</span><br>
     <img src="/images/{{user.image}}" alt="Yo!" height="50"><br>
 </div>
 <div class="row question animate-if" ng-repeat="question in questions" ng-if="question.enabled">
     <h2>Question {{question.order}}</h2>
-    <p>{{question.question}}</p>
+    <p ng-bind-html="question.question"></p>
     <div>
         <img ng-repeat="image in question.images" class="imageQuestion" src="images/{{image}}" />
     </div>
