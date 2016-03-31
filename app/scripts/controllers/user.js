@@ -55,7 +55,7 @@ angular.module('trainedMonkeyUiApp')
                     questions[i].showLoader = false;
                 }
                 checkTime();
-                setInterval(checkTime,20000,true);
+                setInterval(checkTime,10000,true);
                 questions.sort(compare);
 
                 questions.forEach(function forEach(v, i, a) {
